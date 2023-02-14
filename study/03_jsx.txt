@@ -1,0 +1,58 @@
+jsx : A syntax extension to JavaScript
+
+자바스크립트의 확장 문법
+
+JS + XML/HTML
+
+JSX 코드 예제
+
+const element = <h1 class="greeting">Hello, World!</h1>;
+
+
+React.createElement : JSX코드를 JS코드로 변환하는 명령어
+
+아래의 코드처럼 풀어준다.
+
+const element = {
+	type: 'h1',
+	props: {
+		className: 'greeting',
+		children: 'Hello, World!'
+	}
+}
+
+type : Element의 유형
+
+props : 속성들을 모아둔 곳
+
+children : 현재 Element에 포함된 자식 Element
+
+
+JSX를 사용하면 생산성과 가독성이 높아지기 때문에 사용하는것을 추천한다.
+
+
+
+장점
+
+코드가 간결해진다.
+
+가독성이 향상된다. ( 버그를 발견하기 쉬워진다.)
+
+Injection Attacks 방어(해킹 방지)
+
+
+
+사용법
+html 안에 script를 사용하고 싶으면 {}로 묶어서 작성하면 된다.
+
+ex)
+<h1>Hello, {name}!</div>
+
+
+태그 안에 속성에 값을 넣는 방법
+
+1. 큰따옴표 사이에 문자열을 넣는다
+<div tabIndex="0"></div>
+
+2. 중괄호 사이에 JS 코드를 넣는다.
+<img src={user.avatarUrl}></img>

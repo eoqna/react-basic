@@ -1,0 +1,109 @@
+Conditional Rendering : 조건부 렌더링, 어떠한 조건에 따라서 렌더링이 달라지는 것
+
+ex) 조건문의 값이 true이면 버튼을 보여주고, false이면 버튼을 가린다.
+
+	function UserGreeting(props) {
+		return <h1>다시 오셨군요!</h1>;
+	}
+
+	function GuestGreeting(props) {
+		return <h1>회원가입을 해주세요.</h1>;
+	}
+
+	function Greeting(props) {
+		const isLoggedIn = props.isLoggedIn;
+
+		if(isLoggedIn) {
+			return <UserGreeting />;
+		}
+
+		return <GuestGreeting />;
+
+	}
+
+
+JS의 Truthy와 Falsy
+
+Truthy : true는 아니지만 true로 여겨지는 값
+
+		ex) true, 
+			{}, (empty object)
+			[], (empty array)
+			42, (number, not zero)
+			"0", "false" (string, not empty)
+
+Falsy : false는 아니지만 false로 여겨지는 값
+
+		ex) false,
+			0, -0 (zero, minus zero)
+			0n (BigInt zero)
+			'', "", `` (empty String)
+			null,
+			undefined,
+			NaN
+
+
+
+Element Variables : React의 Element를 변수처럼 다루는 방법
+
+
+Inline Conditions : 코드를 별도로 분리된 곳에 작성하지 않고 필요한 코드 안에 직접 작성하는 방법, 조건문을 코드 안에 집어넣는 것
+
+Inline If : if문을 필요한 곳에 집어넣어 사용하는 것, if문을 사용하지 않고 '&&' 연산자를 사용한다.
+
+		조건문이 true이면 오른쪽에 오는 element가 결과값이 되고 false이면 false가 결과값이 된다.
+
+
+		ex) const unreadMsgs = props.unreadMsgs;
+	
+			return (
+				{unreadMsgs.length > 0 && 
+					<h2>현재 {unreadMsgs.length}개의 읽지 않은 메세지가 있습니다.</h2>
+				}
+			)
+
+		! '&&' 연산자를 사용할 때 조건문에 false expression을 사용하면 뒤에 나오는 expression은 실행되지않지만
+		  false exprssion의 값이 return돼서 출력되게 된다.
+
+		ex) const count = 0;
+
+			return (
+				<div> {count && <h1>현재 카운트 : {count}</h1>} </div>
+			)
+
+			결과 : <div> 0 </div>
+
+
+Inline If-Else : 조건문의 값에 따라서 다른 Element를 보여줄때 사용하고 '?' 연산자(삼항 연산자)를 사용한다.
+
+			조건이 true이면 첫 번째 항목을 return하고 false이면 두 번째 항목을 return해준다.
+
+			ex)
+
+			function UserStatus(props) {
+				return (
+					<div> 이 사용자는 현재 <b>{ props.isLoggedIn ? '로그인' : '로그인하지 않은' }</b> 상태입니다. </div>
+				)
+			}
+
+
+			* 특정 Component를 렌더링하고 싶지않으면 null을 return하면 된다.
+
+			ex)
+			
+			function WarningBanner(props) {
+				if(!props.warning) {
+					return null;
+				}
+
+				return (
+					<div>경고!</div>
+				)
+			}
+
+			상위 컴포넌트
+			return (
+				<div>
+					<WarningBanner warning={showWarning}/>
+				</div>
+			)

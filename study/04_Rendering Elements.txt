@@ -1,0 +1,24 @@
+Element : React App을 구성하는 가장 작은 블록들
+
+DOM Elements : 많은 정보를 담고 있기때문에 리엑트 엘리먼트보다 무겁다.
+
+React Elements : Virtual DOM에 존재하는 Element, JS의 객체 형태로 존재한다.
+
+React에서 언급하는 Elements는 React Elements를 칭하는것.
+
+
+React Elements 특징
+
+1. 불변성(immutable)
+
+ - Element 생성 후에는 Children이나 Attributes를 바꿀 수 없다.
+
+ - 화면에 변경된 Element를 보여주기 위해서는 기존 Element를 변경하는 것이 아니라 새로운 Element를 만들어서 보여준다.
+
+
+
+const element = <h1>Hello, React!</h1>;
+ReactDOM.render(element, document.getElementById('root'));
+
+첫 번째 요소인 React Element를 2번째 요소인 DOM Element에 Rendering한다.
+

@@ -1,0 +1,43 @@
+State : React Component의 상태를 의미한다.
+
+	  React Component의 변경 가능한 데이터를 의미한다.
+
+	  React를 사용하는 개발자가 따로 정의해서 사용한다.
+
+	   렌더링이나 데이터 흐름에 사용되는 값 만을 state에 포함시켜야 한다.
+
+
+	  * state는 JavaScript 객체이다.
+
+	   Class Component의 경우 state를 생성자에서 정의한다. <-> Function Component는 useState라는 hook을 사용해서 정의한다.
+
+	   state는 직접 수정하면 안된다.(setState 함수를 사용하여 수정하여야한다.)
+
+	   ex) this.state = { name: 'Inje' } (X) => this.setState({ name: 'Inje' }) (O)
+
+	  React에서의 State는 컴포넌트의 랜더링과 관련되어있기 때문에 마음대로 수정해버리면 개발자가 의도한 대로 프로그램 동작이 안될 수 있다.
+
+
+
+LifeCylce : Component의 생성 시점과 사망 시점 까지의 순서
+
+		크게 Mounting(출생), Updating(인생), Unmounting(사망)으로 이루어져있다.
+
+ - Mount : 1. 생성자가 실행된다. (Component의 State를 정의한다.)
+
+	    2. 컴포넌트가 렌더링된다.
+
+	       3. componentDidMount 함수가 호출된다.
+
+ - Updating : 1. Component의 props가 변경되거나 setState 함수를 통해 state가 변경되거나 forceUpdate라는 함수를 통해
+
+		   컴포넌트가 다시 강제로 렌더링된다.
+
+		  2. 렌더링 이후에 componentDidUpdate 함수가 호출된다.
+
+ - Unmount : 상위 컴포넌트에서 하위 컴포넌트를 더 이상 호출하지않을 때 unmount된다.
+
+		 unmount 직전에 componentWillUnmount 함수가 호출된다.
+
+		
+  * Component는 계속 존재하는 것이 아니라 시간의 흐름에 따라 생성되고 업데이트 되다가 사라진다.
